@@ -5,19 +5,29 @@ import { List, Item } from './styles'
 // Pero ahora viene del servicio.
 //import { categories as mockCategories } from '../../../api/db.json'
 
-export const ListOfCategories = () => {
+function useCategoriesData(){
   // valor inicial de useState un array vacio
   const [categories, setCategories] = useState([])
-  const [showFixed, setShowFixed] = useState(false)
+
+  const [loading, setLoading] = useState(false)
   useEffect(function() {
-    fetch('https://gram-api-dac.now.sh/categories')
+    setLoading(true)
+    window.fetch('https://gram-api-dac.now.sh/categories')
       .then(res => res.json())
       .then(response => {
         setCategories(response)
+        setLoading(false)
       })
   }, []) 
   // Para el segundo parémetro se usa un array vacío(dependencias), 
   // solo se ejecuta cuando se monta el compomente, en el primer renderizado  .
+
+  return { categories, loading }
+}
+
+export const ListOfCategories = () => {
+  const { categories, loading } = useCategoriesData()
+  const [showFixed, setShowFixed] = useState(false)
 
   useEffect(function(){
     const onScroll = e => {
@@ -34,13 +44,25 @@ export const ListOfCategories = () => {
   const renderList = (fixed) => (
     <List fixed={ fixed }>
       {
-        categories.map(category =>
-          <Item key={category.id} >
-            <Category {...category} />
-          </Item>)
+        loading
+          ? <Item key='loading' >
+          <Category  />
+        </Item>
+          : categories.map(category =>
+            <Item key={category.id} >
+              <Category {...category} />
+            </Item>
+            )
       }
     </List>
   )
+ /*
+ // primera versión para indicar que estaba cargando
+  if(loading) {
+    return 'Cargando ...'
+  }
+  */
+      
   return (
     <Fragment>
       {renderList()}
