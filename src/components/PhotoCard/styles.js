@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 import { fadeIn } from '../../styles/animation'
 
+export const Article = styled.article`
+  min-height: 200px; /* Relacionado a inersection observer. Para evitar que aparezcan en el viewPort */
+`
 export const ImgWrapper = styled.div`
   border-radius: 10px;
   display: block;
