@@ -17,7 +17,7 @@ export const App = () => {
         ? <PhotoCardWithQuery id={detailId} />
         : <Router>
             <Home path='/' />
-            <Home path='/pet/:id' />
+            <Home path='/pet/:categoryId' />
           </Router>
           // en el package.json le agregamos la opción de compilación:
           // --history-api-fallback
