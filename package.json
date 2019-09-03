@@ -26,7 +26,7 @@
     "@babel/preset-env": "7.5.5",
     "@babel/preset-react": "7.0.0",
     "babel-loader": "8.0.6",
-    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "3.2.0",
     "standard": "13.1.0",
     "webpack": "4.39.1",
     "webpack-cli": "3.3.6",
@@ -34,14 +34,14 @@
   },
   "dependencies": {
     "@reach/router": "1.2.1",
-    "apollo-boost": "^0.4.4",
-    "graphql": "^14.5.3",
-    "intersection-observer": "^0.7.0",
+    "apollo-boost": "0.4.4",
+    "graphql": "14.5.3",
+    "intersection-observer": "0.7.0",
     "react": "16.8.6",
-    "react-apollo": "^3.0.1",
+    "react-apollo": "3.0.1",
     "react-dom": "16.8.6",
     "react-icons": "3.7.0",
-    "styled-components": "^4.3.2"
+    "styled-components": "4.3.2"
   },
   "standard": {
     "ignore": [
