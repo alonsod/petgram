@@ -3,7 +3,7 @@ import { Svg } from './styles'
 import { Link } from '@reach/router'
 
 export const Logo = props => (
-  <Link to='/' >
+  <Link to='/'>
     <Svg
       width={255.917}
       height={122.021}

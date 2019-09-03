@@ -14,15 +14,15 @@ export const App = () => {
       <Logo />
       {
         detailId
-        ? <PhotoCardWithQuery id={detailId} />
-        : <Router>
+          ? <PhotoCardWithQuery id={detailId} />
+          : <Router>
             <Home path='/' />
             <Home path='/pet/:categoryId' />
           </Router>
           // en el package.json le agregamos la opción de compilación:
           // --history-api-fallback
           // si hay un 404 cargara el index
-          // También se modifico el webpack.config.js 
+          // También se modifico el webpack.config.js
           // para agregar al output el publicPath
       }
 

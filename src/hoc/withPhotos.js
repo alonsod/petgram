@@ -15,4 +15,3 @@ query getPhotos($categoryId: ID) {
 `
 
 export const withPhotos = graphql(GET_PHOTOS)
-
