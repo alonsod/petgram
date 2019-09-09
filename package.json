@@ -26,9 +26,13 @@
     "@babel/core": "7.5.5",
     "@babel/preset-env": "7.5.5",
     "@babel/preset-react": "7.0.0",
-    
+    "babel-eslint": "10.0.3",
     "babel-loader": "8.0.6",
-    "html-webpack-plugin": "^3.2.0",
+    "eslint-plugin-prettier": "3.1.0",
+    "eslint-plugin-react": "7.14.3",
+    "html-webpack-plugin": "3.2.0",
+    "prettier": "1.18.2",
+    "standard": "14.1.0",
     "webpack": "4.39.1",
     "webpack-cli": "3.3.6",
     "webpack-dev-server": "3.7.2"
@@ -42,17 +46,35 @@
     "react-apollo": "^3.0.1",
     "react-dom": "16.8.6",
     "react-icons": "3.7.0",
-    "standard": "^14.1.0",
     "styled-components": "^4.3.2"
   },
   "standard": {
     "ignore": [
       "/api/**"
-    ]
+    ],
+
+    "parser": "babel-eslint",
+    "rules": {
+      "react/jsx-fragments": [2, "element"]
+    }    
   },
   "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+          "jsx": true
+      }
+    },    
     "extends": [
       "./node_modules/standard/eslintrc.json"
-    ]
+    ],
+    "plugins": ["eslint-plugin-react"],
+    "parser": "babel-eslint",
+    "rules": {
+      "react/jsx-fragments": [2, "element"],
+      "operator-linebreak": ["error", "after", { "overrides": { "?": "ignore", ":": "ignore" } }],
+      "indent": ["error", 2, { "flatTernaryExpressions": true }]
+    }
   }
 }

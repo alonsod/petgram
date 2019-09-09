@@ -9,7 +9,9 @@ export const ListOfPhotoCardsComponent = ({ data: { photos = [] } } = {}) => {
   // el console.log de arriba funcionaba cuando recibia todas las props
   return (
     <ul>
-      {photos.map(photo => <PhotoCard key={photo.id} {...photo} />)}
+      {
+        photos.map(photo => <PhotoCard key={photo.id} {...photo} />)
+      }
     </ul>
   )
 }

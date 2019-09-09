@@ -13,7 +13,9 @@ mutation likeAnonymousPhoto($input: LikePhoto!) {
 `
 
 export const ToggleLikeMutation = ({ children }) => {
-  return <Mutation mutation={LIKE_PHOTO}>
-    {children}
-  </Mutation>
+  return (
+    <Mutation mutation={LIKE_PHOTO}>
+      {children}
+    </Mutation>
+  )
 }

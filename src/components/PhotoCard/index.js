@@ -18,24 +18,25 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
   return (
     <Article ref={element}>
       {
-        show && <Fragment>
-          <a href={`/?detail=${id}`}>
-            <ImgWrapper>
-              <Img src={src} />
-            </ImgWrapper>
-          </a>
-          <ToggleLikeMutation>
-            {
-              (toggleLike) => {
-                const handleFavClick = () => {
-                  !liked && toggleLike({ variables: { input: { id } } })
-                  setLiked(!liked)
+        show &&
+          <Fragment key='key'>
+            <a href={`/?detail=${id}`}>
+              <ImgWrapper>
+                <Img src={src} />
+              </ImgWrapper>
+            </a>
+            <ToggleLikeMutation>
+              {
+                (toggleLike) => {
+                  const handleFavClick = () => {
+                    !liked && toggleLike({ variables: { input: { id } } })
+                    setLiked(!liked)
+                  }
+                  return <FavButton liked={liked} likes={likes} onClick={handleFavClick} />
                 }
-                return <FavButton liked={liked} likes={likes} onClick={handleFavClick} />
               }
-            }
-          </ToggleLikeMutation>
-        </Fragment>
+            </ToggleLikeMutation>
+          </Fragment>
       }
     </Article>
   )
