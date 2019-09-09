@@ -25,6 +25,15 @@ import { Router } from '@reach/router'
   * https://eslint.org/docs/rules/operator-linebreak
   * https://eslint.org/docs/rules/indent
   * https://eslint.org/docs/user-guide/configuring
+  *
+  *   // en algun momento en el package.son(eslintConfig) había agregado estas líneas para que no
+  *   // me marcará el error el lint, pero era errores que se debian corregir.
+  *   // Estaba en la sección:
+  *     "rules": {
+  *    "react/jsx-fragments": [2, "element"],
+  *    "operator-linebreak": ["error", "after", { "overrides": { "?": "ignore", ":": "ignore" } }],
+  *    "indent": ["error", 2, { "flatTernaryExpressions": true }]
+  *  }
   */
 export const App = () => {
   const urlParams = new window.URLSearchParams(window.location.search)

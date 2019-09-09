@@ -52,11 +52,7 @@
     "ignore": [
       "/api/**"
     ],
-
-    "parser": "babel-eslint",
-    "rules": {
-      "react/jsx-fragments": [2, "element"]
-    }    
+    "parser": "babel-eslint"  
   },
   "eslintConfig": {
     "parserOptions": {
@@ -70,11 +66,7 @@
       "./node_modules/standard/eslintrc.json"
     ],
     "plugins": ["eslint-plugin-react"],
-    "parser": "babel-eslint",
-    "rules": {
-      "react/jsx-fragments": [2, "element"],
-      "operator-linebreak": ["error", "after", { "overrides": { "?": "ignore", ":": "ignore" } }],
-      "indent": ["error", 2, { "flatTernaryExpressions": true }]
-    }
+    "parser": "babel-eslint"
+
   }
 }
