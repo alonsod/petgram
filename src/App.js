@@ -4,6 +4,7 @@ import { Logo } from './components/Logo'
 import { Detail } from './pages/Detail'
 import { Home } from './pages/Home'
 import { Router } from '@reach/router'
+import { NavBar } from './components/NavBar'
 
 /**
  * Standard
@@ -40,18 +41,19 @@ export const App = () => {
     <div>
       <GlobalStyle />
       <Logo />
-      {
-        <Router>
-          <Home path='/' />
-          <Home path='/pet/:categoryId' />
-          <Detail path='/detail/:detailId' />
-        </Router>
 
-        // en el package.json le agregamos la opción de compilación:
-        // --history-api-fallback
-        // si hay un 404 cargara el index
-        // También se modifico el webpack.config.js
-        // para agregar al output el publicPath
+      <Router>
+        <Home path='/' />
+        <Home path='/pet/:categoryId' />
+        <Detail path='/detail/:detailId' />
+      </Router>
+      <NavBar />
+      {
+      // en el package.json le agregamos la opción de compilación:
+      // --history-api-fallback
+      // si hay un 404 cargara el index
+      // También se modifico el webpack.config.js
+      // para agregar al output el publicPath
       }
 
     </div>
