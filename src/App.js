@@ -5,6 +5,9 @@ import { Detail } from './pages/Detail'
 import { Home } from './pages/Home'
 import { Router } from '@reach/router'
 import { NavBar } from './components/NavBar'
+import { Favs } from './pages/Favs'
+import { NotRegisterUser } from './pages/NotRegisterUser'
+import { User } from './pages/User'
 
 /**
  * Standard
@@ -36,6 +39,11 @@ import { NavBar } from './components/NavBar'
   *    "indent": ["error", 2, { "flatTernaryExpressions": true }]
   *  }
   */
+
+const UserLogged = ({ children }) => {
+  return children({ isAuth: true })
+}
+
 export const App = () => {
   return (
     <div>
@@ -47,7 +55,27 @@ export const App = () => {
         <Home path='/pet/:categoryId' />
         <Detail path='/detail/:detailId' />
       </Router>
+      <UserLogged>
+        {
+          ({ isAuth }) => (
+            isAuth
+              ? (
+                <Router>
+                  <Favs path='/favs' />
+                  <User path='/user' />
+                </Router>
+              )
+              : (
+                <Router>
+                  <NotRegisterUser path='/favs' />
+                  <NotRegisterUser path='/user' />
+                </Router>
+              )
+          )
+        }
+      </UserLogged>
       <NavBar />
+
       {
       // en el package.json le agregamos la opción de compilación:
       // --history-api-fallback
