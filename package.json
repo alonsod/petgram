@@ -39,14 +39,14 @@
   },
   "dependencies": {
     "@reach/router": "1.2.1",
-    "apollo-boost": "^0.4.4",
-    "graphql": "^14.5.3",
+    "apollo-boost": "0.4.4",
+    "graphql": "14.5.3",
     "intersection-observer": "^0.7.0",
     "react": "16.8.6",
-    "react-apollo": "^3.0.1",
+    "react-apollo": "3.0.1",
     "react-dom": "16.8.6",
     "react-icons": "3.7.0",
-    "styled-components": "^4.3.2"
+    "styled-components": "4.3.2"
   },
   "standard": {
     "ignore": [
@@ -67,6 +67,5 @@
     ],
     "plugins": ["eslint-plugin-react"],
     "parser": "babel-eslint"
-
   }
 }

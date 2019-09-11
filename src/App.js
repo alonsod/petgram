@@ -83,7 +83,6 @@ export const App = () => {
       // También se modifico el webpack.config.js
       // para agregar al output el publicPath
       }
-
     </div>
   )
 }
