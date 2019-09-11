@@ -7,8 +7,8 @@ const DEFAULT_IMAGE = 'https://imgur.com/dJa0Hpl.jpg'
 // href por to.
 // a la propiedad path se le agrego # para que no este vacía. valor inicial.
 // al final se cambio Anchor por Link para quedar más claros.
-export const Category = ({ cover = DEFAULT_IMAGE, path ='#', emoji = '?' }) => (
-  <Link to={path} >
+export const Category = ({ cover = DEFAULT_IMAGE, path = '#', emoji = '?' }) => (
+  <Link to={path}>
     <Image src={cover} />
     {emoji}
   </Link>
