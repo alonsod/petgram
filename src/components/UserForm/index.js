@@ -1,25 +1,31 @@
-import React, { useState } from 'react'
-
-const useInputValue = initialValue => {
-  const [value, setValue] = useState(initialValue)
-  const onChange = e => setValue(e.target.value)
-
-  return { value, onChange }
-}
+import React from 'react'
+import { useInputValue } from '../../hooks/useInputValue'
 
 export const UserForm = ({ onSubmit }) => {
-  const [email, setEmail] = useState('')
-  const [password, setPasswortd] = useState('')
+  const email = useInputValue('')
+  const password = useInputValue('')
+
+  /**
+   * Recordar que, lo siguiente:
+   *       <input
+   *     placeholder='Email' value={email.value}
+   *     onChange={email.handleOnChange}
+   *   />
+   *
+   * Equivale a (rest Operator):
+   * <input
+   *     placeholder='Email' {...email}
+   *   />
+   *
+   */
 
   return (
     <form onSubmit={onSubmit}>
       <input
-        placeholder='Email' value={email}
-        onChange={e => setEmail(e.target.value)}
+        placeholder='Email' {...email}
       />
       <input
-        placeholder='Password' type='password' value={password}
-        onChange={e => setPasswortd(e.target.value)}
+        placeholder='Password' type='password' {...password}
       />
       <button>Iniciar Sesión</button>
     </form>
