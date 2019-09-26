@@ -1,12 +1,17 @@
 import React, { createContext, useState } from 'react'
 
-const Context = createContext()
+export const Context = createContext() /** Al importar Conetxt debe ser nombrado */
+
 const Provider = ({ children }) => {
-  const [isAuth, setIsAuth] = useState(false)
+  const [isAuth, setIsAuth] = useState(() => {
+    return window.sessionStorage.getItem('token')
+  })
+
   const value = {
     isAuth,
-    activateAuth: () => {
+    activateAuth: token => {
       setIsAuth(true)
+      window.sessionStorage.setItem('token', token)
     }
   }
 
