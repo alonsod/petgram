@@ -3,10 +3,11 @@ import { GlobalStyle } from './styles/GlobalStyles'
 import { Logo } from './components/Logo'
 import { Detail } from './pages/Detail'
 import { Home } from './pages/Home'
-import { Router } from '@reach/router'
+import { Router, Redirect } from '@reach/router'
 import { NavBar } from './components/NavBar'
 import { Favs } from './pages/Favs'
 import { NotRegisterUser } from './pages/NotRegisterUser'
+import { NotFound } from './pages/NotFound'
 import { User } from './pages/User'
 import { Context } from './Context'
 /**
@@ -49,28 +50,24 @@ export const App = () => {
       <Logo />
 
       <Router>
+        <NotFound default />
         <Home path='/' />
         <Home path='/pet/:categoryId' />
         <Detail path='/detail/:detailId' />
+        {!isAuth && <NotRegisterUser path='/login' />}
+        {!isAuth && <Redirect from='/favs' to='/login' />}
+        {!isAuth && <Redirect from='/user' to='/login' />}
+        {isAuth && <Redirect from='login' to='/' />}
+        <Favs path='/favs' />
+        <User path='/user' />
       </Router>
-      {
-        isAuth
-          ? (
-            <Router>
-              <Favs path='/favs' />
-              <User path='/user' />
-            </Router>
-          )
-          : (
-            <Router>
-              <NotRegisterUser path='/favs' />
-              <NotRegisterUser path='/user' />
-            </Router>
-          )
-      }
       <NavBar />
 
       {
+
+        // Para evitar que nos marque error en /Login como NotFound, una vez logueado
+        //  {isAuth && <Redirect from='login' to='/' />}
+
       // en el package.json le agregamos la opción de compilación:
       // --history-api-fallback
       // si hay un 404 cargara el index
