@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { GlobalStyle } from './styles/GlobalStyles'
 import { Logo } from './components/Logo'
 import { Detail } from './pages/Detail'
@@ -8,7 +8,7 @@ import { NavBar } from './components/NavBar'
 import { Favs } from './pages/Favs'
 import { NotRegisterUser } from './pages/NotRegisterUser'
 import { User } from './pages/User'
-import Context from './Context'
+import { Context } from './Context'
 /**
  * Standard
  * Para la opción
@@ -41,6 +41,8 @@ import Context from './Context'
   */
 
 export const App = () => {
+  const { isAuth } = useContext(Context)
+
   return (
     <div>
       <GlobalStyle />
@@ -51,25 +53,21 @@ export const App = () => {
         <Home path='/pet/:categoryId' />
         <Detail path='/detail/:detailId' />
       </Router>
-      <Context.Consumer>
-        {
-          ({ isAuth }) => (
-            isAuth
-              ? (
-                <Router>
-                  <Favs path='/favs' />
-                  <User path='/user' />
-                </Router>
-              )
-              : (
-                <Router>
-                  <NotRegisterUser path='/favs' />
-                  <NotRegisterUser path='/user' />
-                </Router>
-              )
+      {
+        isAuth
+          ? (
+            <Router>
+              <Favs path='/favs' />
+              <User path='/user' />
+            </Router>
           )
-        }
-      </Context.Consumer>
+          : (
+            <Router>
+              <NotRegisterUser path='/favs' />
+              <NotRegisterUser path='/user' />
+            </Router>
+          )
+      }
       <NavBar />
 
       {
