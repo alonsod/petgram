@@ -1,15 +1,17 @@
-import React, { useContext } from 'react'
+import React, { useContext, Suspense } from 'react'
 import { GlobalStyle } from './styles/GlobalStyles'
 import { Logo } from './components/Logo'
 import { Detail } from './pages/Detail'
 import { Home } from './pages/Home'
 import { Router, Redirect } from '@reach/router'
 import { NavBar } from './components/NavBar'
-import { Favs } from './pages/Favs'
+// import { Favs } from './pages/Favs'
 import { NotRegisterUser } from './pages/NotRegisterUser'
 import { NotFound } from './pages/NotFound'
 import { User } from './pages/User'
 import { Context } from './Context'
+import { Div } from './components/Layout/styles'
+
 /**
  * Standard
  * Para la opción
@@ -41,11 +43,17 @@ import { Context } from './Context'
   *  }
   */
 
+/**
+   * Suspense: muestra un componente cueando el original no ha sido cargado.
+   * Se usa en conjunto con React.lazy
+   */
+const Favs = React.lazy(() => import('./pages/Favs'))
+
 export const App = () => {
   const { isAuth } = useContext(Context)
 
   return (
-    <div>
+    <Suspense fallback={<div />}>
       <GlobalStyle />
       <Logo />
 
@@ -74,6 +82,6 @@ export const App = () => {
       // También se modifico el webpack.config.js
       // para agregar al output el publicPath
       }
-    </div>
+    </Suspense>
   )
 }
