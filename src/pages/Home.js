@@ -10,7 +10,7 @@ import { Layout } from '../components/Layout'
  * @param {*} param0
  */
 
-export const Home = ({ categoryId }) => {
+const HomePage = ({ categoryId }) => {
   return (
     <Layout
       title='Tu app de fotos de mascotas'
@@ -21,3 +21,7 @@ export const Home = ({ categoryId }) => {
     </Layout>
   )
 }
+
+export const Home = React.memo(HomePage, (prevProps, props) => {
+  return prevProps.categoryId === props.categoryId
+})
