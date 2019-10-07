@@ -1,0 +1,7 @@
+{
+  "projectId": "petgram",
+  "baseUrl": "https://petgram.alonsod.now.sh",
+  "chromeWebSecurity": false,
+  "viewportWidth": 500, 
+  "viewHeight": 800
+}

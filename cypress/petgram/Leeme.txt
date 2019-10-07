@@ -1,0 +1,4 @@
+
+Cypress no se esta ejecutando en el ambiente WSL-Ubuntu.
+
+Se instaló en windows. Se realializaron las pruebas y solo se copio la carpeta para conservar las pruebas en git.
