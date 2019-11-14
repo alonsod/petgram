@@ -23,7 +23,7 @@ const renderProp = ({ loading, error, data }) => {
   return <PhotoCard {...photo} />
 }
 
-//  En las reder Props no se puede renderizar un componente, sino una función.
+//  En las reder Props no se puede renderizar un componente, sino una función (... que devuelve un componente).
 export const PhotoCardWithQuery = ({ id }) => (
   <Query query={GET_SINGLE_PHOTO} variables={{ id }}>
     {
